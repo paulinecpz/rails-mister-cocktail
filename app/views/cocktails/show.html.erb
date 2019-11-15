@@ -1,6 +1,41 @@
-<h1><%= @cocktail.name %></h1>
-<%= cl_image_tag("photo-1551024709-8f23befc6f87_nzwheo"), width: 400, height: 300, crop: :fill) %>
+<!-- Navbar -->
 
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <a class="navbar-brand" href="#">
+    <img src="https://image.flaticon.com/icons/png/512/38/38706.png" class="avatar" />
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to 'Home', cocktails_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Create new cocktail', new_cocktail_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item dropdown">
+        <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://image.flaticon.com/icons/png/512/38/38706.png" />
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path @cocktail.photo, height: 300, width: 400, crop: :fill %>');">
+    <div class="container">
+      <h1><%= @cocktail.name %></h1>
+      <p>Register your favorite Cocktails here.</p>
+      <%= link_to 'Delete', delete_cocktail_path(@cocktail), method: :delete, class: "btn" %>
+    </div>
+  </div>
+
+<h1><%= @cocktail.name %></h1>
+<%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
 <p><%= @cocktail.description %></p>
 
 <h3>Add ingredient</h3>
@@ -25,3 +60,6 @@
 <% end %>
   <li><%= link_to 'Add new', new_cocktail_dose_path(@cocktail) %></li>
 <ul>
+
+  <%= link_to 'Back', cocktails_path %>
+
